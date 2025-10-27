@@ -38,7 +38,7 @@ def activate_and_install():
         pip_command = 'venv/bin/pip'
 
     # Instalar dependencias
-    subprocess.run([pip_command, 'install', '-r', 'requirements.txt'], check=True)
+    subprocess.run([pip_command, 'install', '-r', 'config/requirements.txt'], check=True)
     print("✅ Dependencias instaladas")
 
 def run_tests():
@@ -49,7 +49,7 @@ def run_tests():
         subprocess.run([sys.executable, '-m', 'pip', 'install', 'requests'], check=True)
 
         # Ejecutar pruebas
-        result = subprocess.run([sys.executable, 'test_api.py'], capture_output=True, text=True)
+        result = subprocess.run([sys.executable, 'tests/test_api.py'], capture_output=True, text=True)
 
         if result.returncode == 0:
             print("✅ Todas las pruebas pasaron")
@@ -68,7 +68,7 @@ def run_application(host='127.0.0.1', port=5000, debug=True):
 
     try:
         subprocess.run([
-            sys.executable, 'app.py'
+            sys.executable, 'src/app.py'
         ], check=True)
     except KeyboardInterrupt:
         print("\n👋 Aplicación detenida por el usuario")
@@ -97,11 +97,11 @@ fi
 # Activar entorno e instalar dependencias
 echo "📦 Instalando dependencias..."
 source venv/bin/activate
-pip install -r requirements.txt
+pip install -r config/requirements.txt
 
 # Ejecutar aplicación
 echo "🚀 Iniciando aplicación..."
-python3 app.py
+python3 src/app.py
 '''
 
     with open('start.sh', 'w') as f:

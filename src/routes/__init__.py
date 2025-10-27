@@ -4,7 +4,7 @@ Sigue el patrón Modelo-Vista-Controlador (MVC)
 """
 
 from flask import Blueprint, render_template, request, jsonify, abort
-from models.calculator import CalculatorModel
+from ..models.calculator import CalculatorModel
 from typing import Dict, Any
 
 

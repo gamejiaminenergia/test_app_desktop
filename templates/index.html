@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="calculator-container">
+        <header class="calculator-header">
+            <h1>🧮 Calculadora Web</h1>
+        </header>
+
+        <main class="calculator-main">
+            <div class="calculator-display">
+                <div class="display-current" id="currentDisplay" aria-live="polite">0</div>
+                <div class="display-previous" id="previousDisplay"></div>
+            </div>
+
+            <div class="calculator-buttons">
+                <!-- Fila 1: Limpiar y operaciones básicas -->
+                <button class="btn btn-clear" onclick="clearDisplay()" aria-label="Limpiar calculadora">C</button>
+                <button class="btn btn-clear" onclick="deleteLast()" aria-label="Borrar último carácter">⌫</button>
+                <button class="btn btn-operation" onclick="appendToDisplay('**')" aria-label="Potencia">^</button>
+                <button class="btn btn-operation" onclick="appendToDisplay('/')" aria-label="División">÷</button>
+
+                <!-- Fila 2: Números 7,8,9 y multiplicación -->
+                <button class="btn btn-number" onclick="appendToDisplay('7')" aria-label="Número 7">7</button>
+                <button class="btn btn-number" onclick="appendToDisplay('8')" aria-label="Número 8">8</button>
+                <button class="btn btn-number" onclick="appendToDisplay('9')" aria-label="Número 9">9</button>
+                <button class="btn btn-operation" onclick="appendToDisplay('*')" aria-label="Multiplicación">×</button>
+
+                <!-- Fila 3: Números 4,5,6 y resta -->
+                <button class="btn btn-number" onclick="appendToDisplay('4')" aria-label="Número 4">4</button>
+                <button class="btn btn-number" onclick="appendToDisplay('5')" aria-label="Número 5">5</button>
+                <button class="btn btn-number" onclick="appendToDisplay('6')" aria-label="Número 6">6</button>
+                <button class="btn btn-operation" onclick="appendToDisplay('-')" aria-label="Resta">-</button>
+
+                <!-- Fila 4: Números 1,2,3 y suma -->
+                <button class="btn btn-number" onclick="appendToDisplay('1')" aria-label="Número 1">1</button>
+                <button class="btn btn-number" onclick="appendToDisplay('2')" aria-label="Número 2">2</button>
+                <button class="btn btn-number" onclick="appendToDisplay('3')" aria-label="Número 3">3</button>
+                <button class="btn btn-operation" onclick="appendToDisplay('+')" aria-label="Suma">+</button>
+
+                <!-- Fila 5: Números 0, punto decimal e igual -->
+                <button class="btn btn-number btn-zero" onclick="appendToDisplay('0')" aria-label="Número 0">0</button>
+                <button class="btn btn-number" onclick="appendToDisplay('.')" aria-label="Punto decimal">.</button>
+                <button class="btn btn-equals" onclick="calculate()" aria-label="Calcular resultado">=</button>
+
+                <!-- Fila 6: Operaciones avanzadas -->
+                <button class="btn btn-advanced" onclick="calculateAdvanced('sqrt')" aria-label="Raíz cuadrada">√</button>
+                <button class="btn btn-advanced" onclick="calculateAdvanced('percentage')" aria-label="Porcentaje">%</button>
+            </div>
+        </main>
+
+        <section class="calculator-history" aria-label="Historial de operaciones">
+            <h2>📋 Historial</h2>
+            <div class="history-list" id="historyList">
+                <!-- El historial se agregará dinámicamente -->
+            </div>
+            <button class="btn btn-secondary" onclick="clearHistory()" id="clearHistoryBtn">Limpiar Historial</button>
+        </section>
+
+        <footer class="calculator-footer">
+            <p>Desarrollado con ❤️ usando Flask y JavaScript vanilla</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/calculator.js') }}"></script>
+</body>
+</html>
